@@ -1,3 +1,4 @@
+infix to postfix conversion::
 class Solution {
     // Function to convert an infix expression to a postfix expression.
      public static int precedence(char c )
@@ -53,5 +54,43 @@ class Solution {
         
         return eval(exp);
         
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+postfix evaluation::
+class Solution
+{
+    //Function to evaluate a postfix expression.
+    public static int evaluate(String s)
+    {
+        Stack<Integer> stack=new Stack<>();
+         for(int i=0;i<s.length();i++)
+         {
+             char c=s.charAt(i);
+             if(Character.isDigit(c))
+             stack.push(c-'0');
+             else
+             {
+                 int c1=stack.pop();
+                 int c2=stack.pop();
+                 if(c=='+')
+                 stack.push(c2+c1);
+                 else if(c=='-')
+                 stack.push(c2-c1);
+                 else if(c=='*')
+                 stack.push(c2*c1);
+                 else if(c=='/')
+                 stack.push(c2/c1);
+             }
+         }
+         return stack.pop();
+    }
+    public static int evaluatePostFix(String S)
+    {
+        int d=evaluate(S);
+        return d;
     }
 }
