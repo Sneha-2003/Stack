@@ -1,0 +1,32 @@
+1) Stacj using queue
+class MyStack {
+  Queue<Integer> stack;
+    public MyStack() {
+        stack=new ArrayDeque<>();
+    }
+    
+    public void push(int x) {
+        stack.add(x);
+        int len=stack.size(),i=1;
+        while(i<len)
+        {
+            stack.add(stack.remove());
+            i++;
+        }
+    }
+    
+    public int pop() {
+        return stack.remove();
+    }
+    
+    public int top() {
+        return stack.peek();
+    }
+    
+    public boolean empty() {
+        if(stack.size()==0)
+            return true;
+        return false;
+    }
+}
+
